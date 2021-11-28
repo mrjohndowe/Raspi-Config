@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+
+MYSQL_ROOT="root"
+MYSQL_PASS="password"
+MYSQL_USER="mrjohndowe"
+MYSQL_USER_PASS="53nrw695"
+
+sudo clear;
+echo "Getting ready to install MYSQL on Pi";
+echo "";
+echo "Updating Files.....";
+echo "";
+sudo apt update -y;
+echo "Upgrading Files ....";
+echo "";
+sudo apt upgrade -y;
+echo "";
+echo "Getting the files for the database server";
+echo "";
+sudo apt install mariadb-server -y;
+echo "Running the MySQL securing process";
+echo "ATTENTION: User input needed....";
+sleep 60;
+sudo mysql_secure_installation;
+echo "Creating a MySQL User.... because you cant just use root.....";
+sudo mysql -u "$MYSQL_ROOT" -p"$MYSQL_PASS";
+echo CREATE USER '$MYSQL_USER' IDENTIFIED BY '$MYSQL_USER_PASS';
+echo GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER';
+#echo GRANT ALL PRIVILEGES ON *.* TO 'mrjohndowe' IDENTIFIED BY '53nrw695' WITH GRANT OPTION;;
+echo FLUSH PRIVILEGES;;
+echo \q;;
+echo "Install the PHP PHP MySQL Connector";
+sudo apt install php-mysql -y;
+echo "MySQL installation complete";
+echo "Would you like to run the main installation file again? (Y/n)"
+read $ANSWER;
+
+if($ANSWER == "Y")
+	then ./../installation.sh
+else 
+	echo "Goodbye";
+fi
