@@ -55,6 +55,20 @@ restartAll(){
 	
 }
 
+runINIT(){
+	
+	echo -e "\n ${Cyan} Would you like to run the main installation file again? (Y/n) | ${Color_Off}" ; read ANSWER;
+	clear;
+	if($ANSWER == "Y" || $ANSWER == "y" || $ANSWER == "yes" || $ANSWER == "YES")
+		then exec ../init.sh;
+	else 
+		echo "Goodbye";
+		sleep 1;
+		clear;
+	fi
+	
+}
+
 
 #RUN
 update
@@ -65,4 +79,4 @@ setPermissions
 restartWebServer
 restartAll
 
-echo -e "\n${Green} SUCCESS! MySQL password is: ${PASS_MYSQL_ROOT} ${Color_Off}"
+echo -e "\n${Green} PHPMyAdmin Installation SUCCESS! ${Color_Off}"
