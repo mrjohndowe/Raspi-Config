@@ -69,7 +69,7 @@ echo "Would you like to run the main installation file again? (Y/n) | " ; read A
 clear;
 if($ANSWER == "Y" || $ANSWER == "y" || $ANSWER == "yes" || $ANSWER == "YES")
 	then exec ../init.sh;
-else 
+else
 	echo "Goodbye";
 	sleep 1;
 	clear;
