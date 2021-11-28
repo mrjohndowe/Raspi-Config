@@ -43,10 +43,12 @@ echo "Installing the PHP PHP MySQL Connector";
 sudo apt install php-mysql -y;
 echo "MySQL installation complete";
 echo "Would you like to run the main installation file again? (Y/n)"
-read $ANSWER;
+read ANSWER;
 
-if($ANSWER == "Y")
-	then ./../installation.sh
+if($ANSWER == "Y" || $ANSWER == "y")
+	then exec ../installation.sh;
 else 
 	echo "Goodbye";
+	sleep 1;
+	clear;
 fi
