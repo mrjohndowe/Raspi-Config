@@ -6,6 +6,7 @@
 #		GRANT ALL PRIVILEGES ON `${1}_database`.* TO '$1'@'%' WITH GRANT OPTION;"
 #
 #
+myConfig = "rootConfig.cnf"
 MYSQL_ROOT="root"
 MYSQL_PASS="password"
 MYSQL_USER="mrjohndowe"
@@ -31,22 +32,16 @@ sudo mysql_secure_installation;
 echo "Creating a MySQL User.... because you cant just use root.....";
 
 sudo mysql -p$MYSQL_PASS -u $MYSQL_ROOT -Bse "GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER' IDENTIFIED BY '$MYSQL_USER_PASS' WITH GRANT OPTION; \q;";
-
-#sudo mysql -u "$MYSQL_ROOT" -p"$MYSQL_PASS";
-#echo CREATE USER '$MYSQL_USER' IDENTIFIED BY '$MYSQL_USER_PASS';
-#echo GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER';
-#echo GRANT ALL PRIVILEGES ON *.* TO 'mrjohndowe' IDENTIFIED BY '53nrw695' WITH GRANT OPTION;;
-#echo FLUSH PRIVILEGES;;
-#echo \q;;
-
 echo "Installing the PHP PHP MySQL Connector";
-sudo apt install php-mysql -y;
+sudo apt install php8.0-mysql -y;
+sudo mv ~/.my.cnf ~/.my.cnf.BAK;
+sudo cp $myConfig "~/.my.cnf";
 echo "MySQL installation complete";
 echo "Would you like to run the main installation file again? (Y/n)"
 read ANSWER;
-
-if($ANSWER == "Y" || $ANSWER == "y")
-	then exec ../installation.sh;
+clear;
+if($ANSWER == "Y" || $ANSWER == "y" || $ANSWER == "yes" || $ANSWER == "YES")
+	then exec ../init.sh;
 else 
 	echo "Goodbye";
 	sleep 1;

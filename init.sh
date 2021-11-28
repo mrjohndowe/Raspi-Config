@@ -9,23 +9,17 @@ doweFiles=".doweFiles"
 phpVersion="8.0"
 mysql="mysql_install.sh"
 nginx="nginx_install.sh"
-myConfig = "rootConfig.cnf"
+
 
 ###### END VARIABLES ######
 
 sudo clear;
-#sudo mv ~/.my.cnf ~/.my.cnf.BAK;
-#sudo cp "$doweFiles/$myConfig" ".my.cnf";
 echo "Welcome to the Dowe Server Files Installation....";
 echo "Please enter the name of the file you would like to install";
 echo -n "Options are: [1] NGINX, [2] PHP${phpVersion}, [3] MySql, [4] SQLite3, [5] Gittea | ";
 
 read OPTION;
 
-
-
-	
-		
 	case $OPTION in
 		1)
 			echo -n $webserver;;

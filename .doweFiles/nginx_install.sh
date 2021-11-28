@@ -24,7 +24,7 @@ echo "UPGRADING.....";
 sudo apt-get upgrade -y;
 
 echo "Installing NGINX";
-sudo apt-get remove apache2 -y;
+sudo apt-get autoremove apache2 -y;
 sudo apt-get install nginx -y;
 
 echo "Starting the WebServer: NGINX"
@@ -51,17 +51,26 @@ echo "location ~ \.php$ { ";
 echo "               include snippets/fastcgi-php.conf; ";
 echo "               fastcgi_pass unix:/var/run/php/php8.0-fpm.sock; ";
 echo "        } ";
-sudo cat $filesFolder >>  /etc/nginx/sites-enabled/default;
+sudo cp $webserverDefault >>  /etc/nginx/sites-enabled/default -y;
 
 echo " Reloading the WebServer NGINX";
 sudo systemctl force-reload nginx;
-sudo cat $filesFolder/$testphp >> /var/www/html/index.php;
+sudo cp $testphp >> /var/www/html/index.php -y;
 
 echo "Installing the PHP.ini file";
-sudo cat $filesFolder/$phpini >> /etc/php/8.0/fpm/$phpini;
+sudo cp $phpini >> /etc/php/8.0/fpm/$phpini -y;
 
 echo "Reloading the webserver and php";
 sudo service nginx stop; service php8.0-fpm force-reload; service nginx start;
 
 echo "Congratulations you have successfully installed NGINX with PHP 8.0";
 sudo service --status-all;
+echo "Would you like to run the main installation file again? (Y/n) | " ; read ANSWER;
+clear;
+if($ANSWER == "Y" || $ANSWER == "y" || $ANSWER == "yes" || $ANSWER == "YES")
+	then exec ../init.sh;
+else 
+	echo "Goodbye";
+	sleep 1;
+	clear;
+fi
