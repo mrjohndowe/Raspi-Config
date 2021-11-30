@@ -57,9 +57,9 @@ motd() {
 	sudo chown root:root /etc/profile.d/motd.sh
 	# Set the correct permissions
 	sudo chmod +x /etc/profile.d/motd.sh
-	# Create a backup of the Default MOTD
-	sudo mv /etc/motd /etc/motd.BACKUP
-	
+	# Removal of the Default MOTD
+	sudo rm /etc/motd/
+
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 	then
 		return 1
@@ -81,7 +81,7 @@ install_nginx() {
 	then
 	# Download the NGINX Files
 	sudo curl -s ${REPO}${doweFiles}/$nginx | bash
-	
+
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 	then
 		return 1
@@ -92,7 +92,11 @@ motd
 bash_copy
 install_nginx
 
-echo -n "${Yellow} Reloading.. ${Color_Off}"
+echo -e "${Yellow} Reloading.. ${Color_Off}"
 reload
 
-echo -n "${Green} All done. Enjoy! ${Color_Off}"
+echo -e "${Green} All done. Enjoy! ${Color_Off}"
+sleep 5
+sudo clear
+
+
