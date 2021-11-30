@@ -42,7 +42,6 @@ bash_copy(){
 	curl -s ${REPO}.bash_aliases > ~/.bash_aliases
 	curl -s ${REPO}.nanorc > ~/.nanorc
 	curl -s ${REPO}.profile > ~/.profile
-	
 }
 
 # MOTD SETUP
@@ -93,7 +92,7 @@ motd
 bash_copy
 install_nginx
 
-echo "Reloading.. "
+echo -n "${Yellow} Reloading.. ${Color_Off}"
 reload
 
-echo "All done. Enjoy!"
+echo -n "${Green} All done. Enjoy! ${Color_Off}"
