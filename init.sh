@@ -3,6 +3,7 @@
 # Repo Location that contains all the scripts to run
 REPO="https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/"
 DOWEFILES=".doweFiles/"
+MOTDFILES="motd_files/"
 
 # Location to save the scripts
 SCRIPTS_PATH="/usr/local/bin/"
@@ -52,7 +53,7 @@ motd() {
 	if [[ $REPLY =~ ^[yY]$ ]]
 	then
 	# Download the MOTD Files
-	sudo wget ${REPO}${doweFiles}/motd.sh -O /etc/profile.d/motd.sh
+	sudo wget ${REPO}${doweFiles}/${MOTDFILES}/motd1.sh -O /etc/profile.d/motd.sh
 	# Change Ownership of the file
 	sudo chown root:root /etc/profile.d/motd.sh
 	# Set the correct permissions
