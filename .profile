@@ -25,3 +25,9 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+#sudo ./.doweFiles/tmux.sh
+#sleep 30
+session="workspace"
+tmux new-session -A -s $session
+
