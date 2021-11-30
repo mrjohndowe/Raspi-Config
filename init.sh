@@ -97,25 +97,6 @@ welcome
 bashrc
 motd
 
-# echo -n "Options are: [1] NGINX, [2] MySql, [3] SQLite3, [4] PHPMyAdmin, [5] Gittea, [0] Install All | ";
-# read OPTION;
-	# case $OPTION in
-		# 1)
-			# exec $doweFiles/$nginx;;
-		# 4)
-			# exec $doweFiles/$phpmyadmin;;
-		# 2)
-			# exec $doweFiles/$mysql;;
-		# 3)
-			# echo -n "SQLite3";;
-		# 5)
-			# echo -n "Gittea";;
-		# 0) 	
-			# echo -n "Install All";;
-		# *)
-			# echo -n "\n ${Red} ERROR: Option $OPTION not available...${Color_Off}\n";;
-	# esac
-# 
 
 echo "Reloading.. "
 reload
