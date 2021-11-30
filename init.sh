@@ -53,7 +53,7 @@ motd() {
 	if [[ $REPLY =~ ^[yY]$ ]]
 	then
 	# Download the MOTD Files
-	sudo wget ${REPO}${doweFiles}/${MOTDFILES}motd1.sh -O /etc/profile.d/motd.sh
+	sudo wget ${REPO}${MOTDFILES}motd1.sh -O /etc/profile.d/motd.sh
 	# Change Ownership of the file
 	sudo chown root:root /etc/profile.d/motd.sh
 	# Set the correct permissions
