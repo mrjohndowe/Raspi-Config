@@ -85,7 +85,7 @@ install_nginx() {
 	if [[ $REPLY =~ ^[yY]$ ]]
 	then
 	# Download the NGINX Files
-	sudo curl -s ${REPO}${doweFiles}/$nginx
+	sudo curl -s ${REPO}${doweFiles}/$nginx | bash
 	
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 	then
@@ -96,17 +96,9 @@ install_nginx() {
 welcome
 bashrc
 motd
-			
-
-
-
-
-
 
 # echo -n "Options are: [1] NGINX, [2] MySql, [3] SQLite3, [4] PHPMyAdmin, [5] Gittea, [0] Install All | ";
-
 # read OPTION;
-
 	# case $OPTION in
 		# 1)
 			# exec $doweFiles/$nginx;;
@@ -123,7 +115,8 @@ motd
 		# *)
 			# echo -n "\n ${Red} ERROR: Option $OPTION not available...${Color_Off}\n";;
 	# esac
-	
+# 
+
 echo "Reloadig.. "
 reload
 
