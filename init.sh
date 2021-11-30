@@ -117,7 +117,7 @@ motd
 	# esac
 # 
 
-echo "Reloadig.. "
+echo "Reloading.. "
 reload
 
 echo "All done. Enjoy!"
