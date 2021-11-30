@@ -94,7 +94,7 @@ install_nginx() {
 }
 
 welcome
-bashrc
+bash_copy
 motd
 
 
