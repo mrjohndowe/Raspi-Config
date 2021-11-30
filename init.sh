@@ -1,6 +1,13 @@
-#!/bin/sh
-#
+#!/bin/bash
+# 
+# Repo Location that contains all the scripts to run
+REPO="https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/"
+DOWEFILES=".doweFiles/"
 
+# Location to save the scripts
+SCRIPTS_PATH="/usr/local/bin/"
+
+# Colors 
 Color_Off='\033[0m'       # Reset
 
 # Regular Colors
@@ -20,34 +27,104 @@ phpVersion="8.0"
 mysql="mysql_install.sh"
 nginx="nginx_install.sh"
 phpmyadmin="phpmyadmin_installation.sh"
+# Temp Location Folder
+TEMP="/var/tmp/"
 
 
 ###### END VARIABLES ######
 
-sudo clear;
-echo "Welcome to the Dowe Server Files Installation....";
-echo "Please enter the name of the file you would like to install";
-echo -n "Options are: [1] NGINX, [2] MySql, [3] SQLite3, [4] PHPMyAdmin, [5] Gittea, [0] Install All | ";
+# BASH PROFILE
+#############
+# Copy the bashrc, profile, and bash_aliases file from the repository
+bash_copy(){
+	curl -s ${REPO}.bashrc > ~/.bashrc
+	curl -s ${REPO}.bash_aliases > ~/.bash_aliases
+	curl -s ${REPO}.nanorc > ~/.nanorc
+	curl -s ${REPO}.profile > ~/.profile
+	
+}
 
-read OPTION;
+# MOTD SETUP
+############
+motd() {
+	read -p " Would you like to setup MOTD? (Y/n) " -n 1 -r
+	echo
+	if [[ $REPLY =~ ^[yY]$ ]]
+	then
+	# Download the MOTD Files
+	sudo wget ${REPO}${doweFiles}/motd.sh -O /etc/profile.d/motd.sh
+	# Change Ownership of the file
+	sudo chown root:root /etc/profile.d/motd.sh
+	# Set the correct permissions
+	sudo chmod +x /etc/profile.d/motd.sh
+	# Create a backup of the Default MOTD
+	sudo mv /etc/motd /etc/motd.BACKUP
+	
+	elif [[ ! $REPLY =~ ^[Yy]$ ]]
+	then
+		return 1
+	fi
+}
 
-	case $OPTION in
-		1)
-			echo -n $webserver;;
-		4)
-			exec $doweFiles/$phpmyadmin;;
-		2)
-			exec $doweFiles/$mysql;;
-		3)
-			echo -n "SQLite3";;
-		5)
-			echo -n "Gittea";;
-		0) 	
-			echo -n "Install All";;
-		*)
-			echo -n "\n ${Red} ERROR: Option $OPTION not available...${Color_Off}\n";;
-	esac
+# Reload settings / files
+#########################
+reload() {
+  source ~/.bashrc
+  sudo service ssh restart
+  # Empty Temp dir?
+}
+
+welcome() {
+	echo -e "${Cyan} Welcome to the Dowe Server Files Installation....${Color_Off}";
+	
+}
+
+install_nginx() {
+	read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
+	echo
+	if [[ $REPLY =~ ^[yY]$ ]]
+	then
+	# Download the NGINX Files
+	sudo curl -s ${REPO}${doweFiles}/$nginx
+	
+	elif [[ ! $REPLY =~ ^[Yy]$ ]]
+	then
+		return 1
+	fi
+}
+
+welcome
+bashrc
+motd
 			
 
+
+
+
+
+
+# echo -n "Options are: [1] NGINX, [2] MySql, [3] SQLite3, [4] PHPMyAdmin, [5] Gittea, [0] Install All | ";
+
+# read OPTION;
+
+	# case $OPTION in
+		# 1)
+			# exec $doweFiles/$nginx;;
+		# 4)
+			# exec $doweFiles/$phpmyadmin;;
+		# 2)
+			# exec $doweFiles/$mysql;;
+		# 3)
+			# echo -n "SQLite3";;
+		# 5)
+			# echo -n "Gittea";;
+		# 0) 	
+			# echo -n "Install All";;
+		# *)
+			# echo -n "\n ${Red} ERROR: Option $OPTION not available...${Color_Off}\n";;
+	# esac
 	
-	
+echo "Reloadig.. "
+reload
+
+echo "All done. Enjoy!"
