@@ -30,6 +30,7 @@ phpmyadmin="phpmyadmin_installation.sh"
 # Temp Location Folder
 TEMP="/var/tmp/"
 
+echo -e "${Cyan} Welcome to the Dowe Server Files Installation....${Color_Off}";
 
 ###### END VARIABLES ######
 
@@ -74,11 +75,6 @@ reload() {
   # Empty Temp dir?
 }
 
-welcome() {
-	echo -e "${Cyan} Welcome to the Dowe Server Files Installation....${Color_Off}";
-	
-}
-
 install_nginx() {
 	read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
 	echo
@@ -93,10 +89,9 @@ install_nginx() {
 	fi
 }
 
-welcome
-bash_copy
 motd
-
+bash_copy
+install_nginx
 
 echo "Reloading.. "
 reload
