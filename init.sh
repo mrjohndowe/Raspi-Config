@@ -38,7 +38,7 @@ TEMP="/var/tmp/"
 # BASH PROFILE
 #############
 # Copy the bashrc, profile, and bash_aliases file from the repository
-bash_copy(){
+bashrc(){
 	curl -s ${REPO}.bashrc > ~/.bashrc
 	curl -s ${REPO}.bash_aliases > ~/.bash_aliases
 	curl -s ${REPO}.nanorc > ~/.nanorc
@@ -75,7 +75,7 @@ reload() {
   # Empty Temp dir?
 }
 
-install_nginx() {
+installNGINX() {
 	read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
 	echo
 	if [[ $REPLY =~ ^[yY]$ ]]
@@ -90,8 +90,8 @@ install_nginx() {
 }
 
 motd
-bash_copy
-install_nginx
+bashrc
+installNGINX
 
 echo -e "${Yellow} Reloading.. ${Color_Off}"
 reload
