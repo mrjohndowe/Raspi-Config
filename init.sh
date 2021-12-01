@@ -19,10 +19,10 @@ Blue='\033[0;34m'         # Blue
 Purple='\033[0;35m'       # Purple
 Cyan='\033[0;36m'         # Cyan
 
+echo -e "${Cyan} Welcome to the ${Blue}Dowe Server ${Red}Files Installation${Color_Off}....";
 
 ###### VARIABLES ########
 webserver="nginx"
-sudoPass="rootme"
 doweFiles=".doweFiles"
 phpVersion="8.0"
 mysql="mysql_install.sh"
@@ -31,7 +31,7 @@ phpmyadmin="phpmyadmin_installation.sh"
 # Temp Location Folder
 TEMP="/var/tmp/"
 
-echo -e "${Cyan} Welcome to the Dowe Server Files Installation....${Color_Off}";
+
 
 ###### END VARIABLES ######
 
@@ -81,7 +81,7 @@ install_nginx() {
 	if [[ $REPLY =~ ^[yY]$ ]]
 	then
 	# Download the NGINX Files
-	sudo curl -s ${REPO}${doweFiles}/$nginx | bash
+	sudo curl -s ${REPO}${doweFiles}/$nginx | sudo bash
 
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 	then
@@ -96,8 +96,10 @@ install_nginx
 echo -e "${Yellow} Reloading.. ${Color_Off}"
 reload
 
+clear
+
 echo -e "${Green} All done. Enjoy! ${Color_Off}"
 sleep 5
-sudo clear
+clear
 
 
