@@ -39,10 +39,18 @@ TEMP="/var/tmp/"
 # Copy the bashrc, profile, and bash_aliases file from the repository
 
 copyFiles(){
-	curl -s ${REPO}.bashrc > ~/.bashrc
-	curl -s ${REPO}.bash_aliases > ~/.bash_aliases
-	curl -s ${REPO}.nanorc > ~/.nanorc
-	curl -s ${REPO}.profile > ~/.profile
+	read -p " Would you like to Copy BashRC and Profile Files? (Y/n) " -n 1 -r
+	echo
+	if [[ $REPLY =~ ^[yY]$ ]]
+		then
+		curl -s ${REPO}.bashrc > ~/.bashrc
+		curl -s ${REPO}.bash_aliases > ~/.bash_aliases
+		curl -s ${REPO}.nanorc > ~/.nanorc
+		curl -s ${REPO}.profile > ~/.profile
+	elif [[ ! $REPLY =~ ^[Yy]$ ]]
+		then
+		return 1
+	fi
 }
 
 # MOTD SETUP
