@@ -4,13 +4,10 @@
 REPO="https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/"
 DOWEFILES=".doweFiles/"
 MOTDFILES="motd_files/"
-
 # Location to save the scripts
 SCRIPTS_PATH="/usr/local/bin/"
-
 # Colors 
 Color_Off='\033[0m'       # Reset
-
 # Regular Colors
 Red='\033[0;31m'          # Red
 Green='\033[0;32m'        # Green
@@ -18,9 +15,7 @@ Yellow='\033[0;33m'       # Yellow
 Blue='\033[0;34m'         # Blue
 Purple='\033[0;35m'       # Purple
 Cyan='\033[0;36m'         # Cyan
-
 echo -e "${Cyan} Welcome to the ${Blue}Dowe Server ${Red}Files Installation${Color_Off}....";
-
 ###### VARIABLES ########
 webserver="nginx"
 doweFiles=".doweFiles"
@@ -30,11 +25,7 @@ nginx="nginx_install.sh"
 phpmyadmin="phpmyadmin_installation.sh"
 # Temp Location Folder
 TEMP="/var/tmp/"
-
-
-
 ###### END VARIABLES ######
-
 # BASH PROFILE
 #############
 # Copy the bashrc, profile, and bash_aliases file from the repository
@@ -44,7 +35,6 @@ bashrc(){
 	curl -s ${REPO}.nanorc > ~/.nanorc
 	curl -s ${REPO}.profile > ~/.profile
 }
-
 # MOTD SETUP
 ############
 motd() {
@@ -60,13 +50,11 @@ motd() {
 	sudo chmod +x /etc/profile.d/motd.sh
 	# Removal of the Default MOTD
 	sudo rm /etc/motd/
-
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 	then
 		return 1
 	fi
 }
-
 # Reload settings / files
 #########################
 reload() {
@@ -74,7 +62,6 @@ reload() {
   sudo service ssh restart
   # Empty Temp dir?
 }
-
 installNGINX() {
 	read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
 	echo
@@ -82,24 +69,17 @@ installNGINX() {
 	then
 	# Download the NGINX Files
 	sudo curl -s ${REPO}${doweFiles}/$nginx | sudo bash
-
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 	then
 		return 1
 	fi
 }
-
 motd
 bashrc
 installNGINX
-
 echo -e "${Yellow} Reloading.. ${Color_Off}"
 reload
-
 clear
-
 echo -e "${Green} All done. Enjoy! ${Color_Off}"
 sleep 5
 clear
-
-
