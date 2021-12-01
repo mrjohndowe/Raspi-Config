@@ -1,12 +1,12 @@
 #!/bin/bash
-# 
+#
 # Repo Location that contains all the scripts to run
 REPO="https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/"
 DOWEFILES=".doweFiles/"
 MOTDFILES="motd_files/"
 # Location to save the scripts
 SCRIPTS_PATH="/usr/local/bin/"
-# Colors 
+# Colors
 Color_Off='\033[0m'       # Reset
 # Regular Colors
 Red='\033[0;31m'          # Red
@@ -30,53 +30,55 @@ TEMP="/var/tmp/"
 #############
 # Copy the bashrc, profile, and bash_aliases file from the repository
 bashrc(){
-	curl -s ${REPO}.bashrc > ~/.bashrc
-	curl -s ${REPO}.bash_aliases > ~/.bash_aliases
-	curl -s ${REPO}.nanorc > ~/.nanorc
-	curl -s ${REPO}.profile > ~/.profile
+curl -s ${REPO}.bashrc > ~/.bashrc
+curl -s ${REPO}.bash_aliases > ~/.bash_aliases
+curl -s ${REPO}.nanorc > ~/.nanorc
+curl -s ${REPO}.profile > ~/.profile
 }
 # MOTD SETUP
 ############
 motd() {
-	read -p " Would you like to setup MOTD? (Y/n) " -n 1 -r
-	echo
-	if [[ $REPLY =~ ^[yY]$ ]]
-	then
-	# Download the MOTD Files
-	sudo wget ${REPO}${MOTDFILES}motd1.sh -O /etc/profile.d/motd.sh
-	# Change Ownership of the file
-	sudo chown root:root /etc/profile.d/motd.sh
-	# Set the correct permissions
-	sudo chmod +x /etc/profile.d/motd.sh
-	# Removal of the Default MOTD
-	sudo rm /etc/motd/
-	elif [[ ! $REPLY =~ ^[Yy]$ ]]
-	then
-		return 1
-	fi
+read -p " Would you like to setup MOTD? (Y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[yY]$ ]]
+then
+# Download the MOTD Files
+sudo wget ${REPO}${MOTDFILES}motd1.sh -O /etc/profile.d/motd.sh
+# Change Ownership of the file
+sudo chown root:root /etc/profile.d/motd.sh
+# Set the correct permissions
+sudo chmod +x /etc/profile.d/motd.sh
+# Removal of the Default MOTD
+sudo rm /etc/motd/
+elif [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+return 1
+fi
 }
 # Reload settings / files
 #########################
 reload() {
-  source ~/.bashrc
-  sudo service ssh restart
-  # Empty Temp dir?
+source ~/.bashrc
+sudo service ssh restart
+# Empty Temp dir?
 }
 installNGINX() {
-	read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
-	echo
-	if [[ $REPLY =~ ^[yY]$ ]]
-	then
-	# Download the NGINX Files
-	sudo curl -s ${REPO}${doweFiles}/$nginx | sudo bash
-	elif [[ ! $REPLY =~ ^[Yy]$ ]]
-	then
-		return 1
-	fi
+read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[yY]$ ]]
+then
+# Download the NGINX Files
+sudo curl -s ${REPO}${doweFiles}/$nginx | sudo bash
+elif [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+return 1
+fi
 }
+
 motd
 bashrc
 installNGINX
+
 echo -e "${Yellow} Reloading.. ${Color_Off}"
 reload
 clear
