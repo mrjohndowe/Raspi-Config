@@ -38,7 +38,7 @@ TEMP="/var/tmp/"
 ###################
 # Copy the bashrc, profile, and bash_aliases file from the repository
 
-bashrc(){
+copyFiles(){
 	curl -s ${REPO}.bashrc > ~/.bashrc
 	curl -s ${REPO}.bash_aliases > ~/.bash_aliases
 	curl -s ${REPO}.nanorc > ~/.nanorc
@@ -92,8 +92,9 @@ installNGINX() {
 	fi
 }
 
+### RUN
 motd
-bashrc
+copyFiles
 installNGINX
 
 echo -e "${Yellow} Reloading.. ${Color_Off}"
