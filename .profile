@@ -31,3 +31,5 @@ fi
 session="workspace"
 tmux new-session -A -s $session
 
+#exec ~/.doweFiles/neofetch
+
