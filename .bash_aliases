@@ -5,3 +5,16 @@
 alias l='ls -CF'
 alias a='ls -al'
 alias='lsa -alCF'
+
+
+
+# List of Nodejs Aliases nodejs || node
+alias npm='node'
+alias yum='node'
+
+
+
+# List of Tail Aliases
+# USAGE: tailm LOGFILE1 LOGFILE2
+alias tailm='/etc/profile.d/./multi-tail.sh'
+
