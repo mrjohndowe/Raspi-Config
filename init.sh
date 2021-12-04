@@ -86,7 +86,7 @@ reload() {
 	# Empty Temp dir?
 }
 
-installNGINX() {
+install_NGINX() {
 	read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
 	echo
 	if [[ $REPLY =~ ^[yY]$ ]]
@@ -99,10 +99,24 @@ installNGINX() {
 	fi
 }
 
+install_PHPMyAdmin() {
+	read -p " Would you like to install PHPMyAdmin? (Y/n) " -n 1 -r
+	echo
+	if [[ $REPLY =~ ^[yY]$ ]]
+		then
+		# Download the PHPMyAdmin Files
+		sudo curl -s ${REPO}${doweFiles}/$phpmyadmin | sudo bash
+	elif [[ ! $REPLY =~ ^[Yy]$ ]]
+		then
+		return 1
+	fi
+}
+
 ### RUN
 motd
 copyFiles
-installNGINX
+install_NGINX
+install_PHPMyAdmin
 
 echo -e "${Yellow} Reloading.. ${Color_Off}"
 reload

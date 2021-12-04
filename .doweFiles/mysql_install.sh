@@ -31,19 +31,10 @@ sleep 60;
 sudo mysql_secure_installation;
 echo "Creating a MySQL User.... because you cant just use root.....";
 
-sudo mysql -p$MYSQL_PASS -u $MYSQL_ROOT -Bse "GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER' IDENTIFIED BY '$MYSQL_USER_PASS' WITH GRANT OPTION; \q;";
-echo "Installing the PHP PHP MySQL Connector";
+sudo mysql -p"${MYSQL_PASS}" -u $MYSQL_ROOT -Bse "GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER}' IDENTIFIED BY '${MYSQL_USER_PASS}' WITH GRANT OPTION; \q;";
+echo "Installing the PHP PHP MySQL Connector";S
 sudo apt install php8.0-mysql -y;
 sudo mv ~/.my.cnf ~/.my.cnf.BAK;
 sudo cp $myConfig "~/.my.cnf";
 echo "MySQL installation complete";
-echo "Would you like to run the main installation file again? (Y/n)"
-read ANSWER;
-clear;
-if($ANSWER == "Y" || $ANSWER == "y" || $ANSWER == "yes" || $ANSWER == "YES")
-	then exec ../init.sh;
-else 
-	echo "Goodbye";
-	sleep 1;
-	clear;
-fi
+
