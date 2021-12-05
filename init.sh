@@ -25,7 +25,7 @@ Blue='\033[0;34m'         # Blue
 Purple='\033[0;35m'       # Purple
 Cyan='\033[0;36m'         # Cyan
 
-echo -e "${Cyan} Welcome to the ${Blue}Dowe Server ${Red}Files Installation${Color_Off}...."
+echo "${Cyan} Welcome to the ${Blue}Dowe Server ${Red}Files Installation${Color_Off}...."
 
 ###### VARIABLES ########
 webserver="nginx"
