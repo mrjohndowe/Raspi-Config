@@ -39,6 +39,33 @@ TEMP="/var/tmp/"
 # MOTD SETUP
 ############
 
+show_ascii_berry() {
+  echo -e "
+        ${COL_LIGHT_GREEN}.;;,.
+        .ccccc:,.
+         :cccclll:.      ..,,
+          :ccccclll.   ;ooodc
+           'ccll:;ll .oooodc
+             .;cll.;;looo:.
+                 ${COL_LIGHT_RED}.. ','.
+                .',,,,,,'.
+              .',,,,,,,,,,.
+            .',,,,,,,,,,,,....
+          ....''',,,,,,,'.......
+        .........  ....  .........
+        ..........      ..........
+        ..........      ..........
+        .........  ....  .........
+          ........,,,,,,,'......
+            ....',,,,,,,,,,,,.
+               .',,,,,,,,,'.
+                .',,,,,,'.
+                  ..'''.${COL_NC}
+"
+}
+
+
+
 motd() {
 	read -p " Would you like to setup MOTD? (Y/n) " -n 1 -r
 	echo
@@ -102,6 +129,24 @@ install_NGINX() {
 	fi
 }
 
+# If the color table file exists,
+if [[ -f "${coltable}" ]]; then
+    # source it
+    source "${coltable}"
+# Otherwise,
+else
+    # Set these values so the installer can still run in color
+    COL_NC='\e[0m' # No Color
+    COL_LIGHT_GREEN='\e[1;32m'
+    COL_LIGHT_RED='\e[1;31m'
+    TICK="[${COL_LIGHT_GREEN}?${COL_NC}]"
+    CROSS="[${COL_LIGHT_RED}?${COL_NC}]"
+    INFO="[i]"
+    # shellcheck disable=SC2034
+    DONE="${COL_LIGHT_GREEN} done!${COL_NC}"
+    OVER="\\r\\033[K"
+fi
+
 install_PHPMyAdmin() {
 	read -p " Would you like to install PHPMyAdmin? (Y/n) " -n 1 -r
 	echo
@@ -116,6 +161,7 @@ install_PHPMyAdmin() {
 }
 
 ### RUN
+show_ascii_berry
 motd
 copyFiles
 install_NGINX
