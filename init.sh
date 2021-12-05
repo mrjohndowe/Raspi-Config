@@ -4,7 +4,7 @@
 # -e option instructs bash to immediately exit if any command [1] has a non-zero exit status
 # We do not want users to end up with a partially working install, so we exit the script
 # instead of continuing the installation with something broken
-set -e
+#set -e
 
 # Repo Location that contains all the scripts to run
 REPO="https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/"
@@ -25,7 +25,7 @@ Blue='\033[0;34m'         # Blue
 Purple='\033[0;35m'       # Purple
 Cyan='\033[0;36m'         # Cyan
 
-echo "${Cyan} Welcome to the ${Blue}Dowe Server ${Red}Files Installation${Color_Off}...."
+echo -e "${Cyan} Welcome to the ${Blue}Dowe Server ${Red}Files Installation${Color_Off}...."
 
 ###### VARIABLES ########
 webserver="nginx"
