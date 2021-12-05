@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 # 
-
 # -e option instructs bash to immediately exit if any command [1] has a non-zero exit status
 # We do not want users to end up with a partially working install, so we exit the script
 # instead of continuing the installation with something broken
@@ -34,12 +33,26 @@ phpVersion="8.0"
 mysql="mysql_install.sh"
 nginx="nginx_install.sh"
 phpmyadmin="phpmyadmin_installation.sh"
-
-# Temp Location Folder
 TEMP="/var/tmp/"
 
-###### END VARIABLES ######
-
+# ADMIN CHECK
+# #############
+# Must be root
+str="Root user check"
+if [[ ${EUID} -eq 0 ]]; then
+    echo -e "  ${TICK} ${str}"
+else
+    # Check if sudo is actually installed
+    # If it isn't, exit because the uninstall can not complete
+    if [ -x "$(command -v sudo)" ]; then
+        export SUDO="sudo"
+    else
+        echo -e "  ${CROSS} ${str}
+            Script called with non-root privileges
+            Thus requires elevated privileges to run"
+        exit 1
+    fi
+fi
 # MOTD SETUP
 ############
 motd() {
@@ -67,7 +80,6 @@ motd() {
 # BASH PROFILE
 ###################
 # Copy the bashrc, profile, and bash_aliases file from the repository
-
 copy_files(){
 	read -p " Would you like to Copy BashRC and Profile Files? (Y/n) " -n 1 -r
 	echo
@@ -83,7 +95,8 @@ copy_files(){
 	fi
 }
 
-
+# WEBSERVER INSTALLATION
+#######################
 webserver_install() {
 	read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
 	echo
@@ -96,8 +109,8 @@ webserver_install() {
 		return 1
 	fi
 }
-
-# If the color table file exists,
+#If the color table file exists,
+#################################
 if [[ -f "${coltable}" ]]; then
     # source it
     source "${coltable}"
@@ -114,7 +127,8 @@ else
     DONE="${COL_LIGHT_GREEN} done!${COL_NC}"
     OVER="\\r\\033[K"
 fi
-
+# PHPMYADMIN INSTALLATION
+########################
 phpmyadmin_install() {
 	read -p " Would you like to install PHPMyAdmin? (Y/n) " -n 1 -r
 	echo
@@ -127,17 +141,16 @@ phpmyadmin_install() {
 		return 1
 	fi
 }
-
-
 # Reload settings / files
 #########################
-
 reload() {
 	source ~/.bashrc
 	sudo service ssh restart
 	# Empty Temp dir?
+    #
 }
-
+# SHOW RASBERRY
+###############
 show_ascii_berry() {
   echo -e "
         ${COL_LIGHT_GREEN}.;;,.
@@ -162,18 +175,13 @@ show_ascii_berry() {
                   ..'''.${COL_NC}
 "
 }
-
 ### RUN
-#
-
+########
 motd
 copy_files
 webserver_install
 phpmyadmin_install
 show_ascii_berry
-
-# ####
-# 
 echo -e "${Yellow} Reloading.. ${Color_Off}"
 reload
 clear
