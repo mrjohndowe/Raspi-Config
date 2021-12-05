@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # 
 
 # -e option instructs bash to immediately exit if any command [1] has a non-zero exit status
