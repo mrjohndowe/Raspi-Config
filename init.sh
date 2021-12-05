@@ -164,12 +164,20 @@ show_ascii_berry() {
 }
 
 ### RUN
+#
+
 motd
+
 copyFiles
+
 webserver_install
+
 phpmyadmin_install
+
 show_ascii_berry
 
+# ####
+# 
 echo -e "${Yellow} Reloading.. ${Color_Off}"
 reload
 clear
