@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Repo Location that contains all the scripts to run
 REPO="https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/"
