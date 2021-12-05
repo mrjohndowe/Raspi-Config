@@ -84,7 +84,7 @@ copyFiles(){
 }
 
 
-install_NGINX() {
+webserver_install() {
 	read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
 	echo
 	if [[ $REPLY =~ ^[yY]$ ]]
@@ -115,7 +115,7 @@ else
     OVER="\\r\\033[K"
 fi
 
-install_PHPMyAdmin() {
+phpmyadmin_install() {
 	read -p " Would you like to install PHPMyAdmin? (Y/n) " -n 1 -r
 	echo
 	if [[ $REPLY =~ ^[yY]$ ]]
@@ -166,8 +166,8 @@ show_ascii_berry() {
 ### RUN
 motd
 copyFiles
-install_NGINX
-install_PHPMyAdmin
+webserver_install
+phpmyadmin_install
 show_ascii_berry
 
 echo -e "${Yellow} Reloading.. ${Color_Off}"
