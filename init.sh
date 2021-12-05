@@ -167,13 +167,9 @@ show_ascii_berry() {
 #
 
 motd
-
 copyFiles
-
 webserver_install
-
 phpmyadmin_install
-
 show_ascii_berry
 
 # ####
