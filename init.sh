@@ -165,11 +165,11 @@ install_PHPMyAdmin() {
 }
 
 ### RUN
-show_ascii_berry
 motd
 copyFiles
 install_NGINX
 install_PHPMyAdmin
+show_ascii_berry
 
 echo -e "${Yellow} Reloading.. ${Color_Off}"
 reload
