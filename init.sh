@@ -42,34 +42,6 @@ TEMP="/var/tmp/"
 
 # MOTD SETUP
 ############
-
-show_ascii_berry() {
-  echo -e "
-        ${COL_LIGHT_GREEN}.;;,.
-        .ccccc:,.
-         :cccclll:.      ..,,
-          :ccccclll.   ;ooodc
-           'ccll:;ll .oooodc
-             .;cll.;;looo:.
-                 ${COL_LIGHT_RED}.. ','.
-                .',,,,,,'.
-              .',,,,,,,,,,.
-            .',,,,,,,,,,,,....
-          ....''',,,,,,,'.......
-        .........  ....  .........
-        ..........      ..........
-        ..........      ..........
-        .........  ....  .........
-          ........,,,,,,,'......
-            ....',,,,,,,,,,,,.
-               .',,,,,,,,,'.
-                .',,,,,,'.
-                  ..'''.${COL_NC}
-"
-}
-
-
-
 motd() {
 	read -p " Would you like to setup MOTD? (Y/n) " -n 1 -r
 	echo
@@ -111,14 +83,6 @@ copyFiles(){
 	fi
 }
 
-# Reload settings / files
-#########################
-
-reload() {
-	source ~/.bashrc
-	sudo service ssh restart
-	# Empty Temp dir?
-}
 
 install_NGINX() {
 	read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
@@ -162,6 +126,41 @@ install_PHPMyAdmin() {
 		then
 		return 1
 	fi
+}
+
+
+# Reload settings / files
+#########################
+
+reload() {
+	source ~/.bashrc
+	sudo service ssh restart
+	# Empty Temp dir?
+}
+
+show_ascii_berry() {
+  echo -e "
+        ${COL_LIGHT_GREEN}.;;,.
+        .ccccc:,.
+         :cccclll:.      ..,,
+          :ccccclll.   ;ooodc
+           'ccll:;ll .oooodc
+             .;cll.;;looo:.
+                 ${COL_LIGHT_RED}.. ','.
+                .',,,,,,'.
+              .',,,,,,,,,,.
+            .',,,,,,,,,,,,....
+          ....''',,,,,,,'.......
+        .........  ....  .........
+        ..........      ..........
+        ..........      ..........
+        .........  ....  .........
+          ........,,,,,,,'......
+            ....',,,,,,,,,,,,.
+               .',,,,,,,,,'.
+                .',,,,,,'.
+                  ..'''.${COL_NC}
+"
 }
 
 ### RUN
