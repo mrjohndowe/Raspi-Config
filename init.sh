@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 # 
 
 # -e option instructs bash to immediately exit if any command [1] has a non-zero exit status
@@ -68,7 +68,7 @@ motd() {
 ###################
 # Copy the bashrc, profile, and bash_aliases file from the repository
 
-copyFiles(){
+copy_files(){
 	read -p " Would you like to Copy BashRC and Profile Files? (Y/n) " -n 1 -r
 	echo
 	if [[ $REPLY =~ ^[yY]$ ]]
@@ -167,7 +167,7 @@ show_ascii_berry() {
 #
 
 motd
-copyFiles
+copy_files
 webserver_install
 phpmyadmin_install
 show_ascii_berry
