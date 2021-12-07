@@ -1,5 +1,6 @@
 #!/bin/bash
 
+CROSS=""
 # ADMIN CHECK
 # #############
 # Must be root
@@ -41,14 +42,14 @@ installTools
 
 #DIR="$PWD/user1"
 DIR="/var/www/html"
-OWNER="www-data:www-data"
+OWNER="www-data"
 LOGFILE="change.log"
 
-inotifywait -m -r --format "%e %f" "$DIR" | awk '$1 ~ "CREATE" { print $2; fflush() }' | 
+inotifywait -m -r --format "%e %f" "${DIR}" | awk '$1 ~ "CREATE" { print $2; fflush() }' | 
 while read file
 do
     FILE="${DIR}"/"${file}"
     echo "Changin permission for ${FILE}" >> "${DIR}"/"${LOGFILE}"
-    chown $OWNER "${FILE}"
-    chmod o+r "${FILE}"
+    sudo chown $OWNER:$OWNER "${FILE}"
+    sudo chmod o+r "${FILE}"
 done
