@@ -80,7 +80,7 @@ motd() {
 # BASH PROFILE
 ###################
 # Copy the bashrc, profile, and bash_aliases file from the repository
-copy_files(){
+copyFiles(){
 	read -p " Would you like to Copy BashRC and Profile Files? (Y/n) " -n 1 -r
 	echo
 	if [[ $REPLY =~ ^[yY]$ ]]
@@ -89,6 +89,7 @@ copy_files(){
 		curl -s ${REPO}.bash_aliases > ~/.bash_aliases
 		curl -s ${REPO}.nanorc > ~/.nanorc
 		curl -s ${REPO}.profile > ~/.profile
+		curl -s ${REPO}${DOWEFILES}watch_files.sh > $SCRIPTS_PATH
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 		then
 		return 1
@@ -97,13 +98,13 @@ copy_files(){
 
 # WEBSERVER INSTALLATION
 #######################
-webserver_install() {
+webserverInstall() {
 	read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
 	echo
 	if [[ $REPLY =~ ^[yY]$ ]]
 		then
 		# Download the NGINX Files
-		sudo curl -s ${REPO}${doweFiles}/$nginx | sudo bash
+		sudo curl -s ${REPO}${DOWEFILES}$nginx | sudo bash
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 		then
 		return 1
@@ -129,13 +130,13 @@ else
 fi
 # PHPMYADMIN INSTALLATION
 ########################
-phpmyadmin_install() {
+phpmyadminInstall() {
 	read -p " Would you like to install PHPMyAdmin? (Y/n) " -n 1 -r
 	echo
 	if [[ $REPLY =~ ^[yY]$ ]]
 		then
 		# Download the PHPMyAdmin Files
-		sudo curl -s ${REPO}${doweFiles}/$phpmyadmin | sudo bash
+		sudo curl -s ${REPO}${DOWEFILES}$phpmyadmin | sudo bash
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 		then
 		return 1
@@ -178,9 +179,9 @@ show_ascii_berry() {
 ### RUN
 ########
 motd
-copy_files
-webserver_install
-phpmyadmin_install
+copyFiles
+webserverInstall
+phpmyadminInstall
 show_ascii_berry
 echo -e "${Yellow} Reloading.. ${Color_Off}"
 reload
