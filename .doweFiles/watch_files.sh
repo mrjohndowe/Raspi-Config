@@ -40,7 +40,7 @@ installTools(){
 installTools
 
 #DIR="$PWD/user1"
-DIR="/var/www/html/"
+DIR="/var/www/html"
 OWNER="www-data:www-data"
 LOGFILE="change.log"
 
