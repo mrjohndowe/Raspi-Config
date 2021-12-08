@@ -28,8 +28,8 @@ fi
 
 #sudo ./.doweFiles/tmux.sh
 #sleep 30
-session="workspace"
-tmux new-session -A -s $session
+TMUX="workspace"
+tmux new-session -A -s $TMUX
 
 #exec ~/.doweFiles/neofetch
 
