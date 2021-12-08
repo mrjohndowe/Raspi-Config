@@ -44,7 +44,7 @@ OWNER="www-data"
 LOGFILE="change.log"
 
 inotifywait -m -r --format "%e %f" "${DIR}" | awk '$1 ~ "CREATE" { print $2; fflush() }' | 
-while read file
+while read -r file
 do
     FILE="${DIR}"/"${file}"
     echo "Changin permission for ${FILE}" >> "${DIR}"/"${LOGFILE}"
