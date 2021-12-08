@@ -1,12 +1,12 @@
 #!/bin/bash
 
-CROSS=""
 # ADMIN CHECK
 # #############
 # Must be root
 str="Root user check"
 if [[ ${EUID} -eq 0 ]]; then
     echo -e "  ${TICK} ${str}"
+    goto installTools
 else
     # Check if sudo is actually installed
     # If it isn't, exit because the uninstall can not complete
@@ -37,8 +37,6 @@ installTools(){
 		return 1
 	fi
 }
-
-installTools
 
 #DIR="$PWD/user1"
 DIR="/var/www/html"
