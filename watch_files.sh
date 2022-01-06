@@ -43,7 +43,7 @@ DIR="/var/www/html"
 OWNER="www-data"
 LOGFILE="change.log"
 
-inotifywait -m -r --format "%e %f" "${DIR}" | awk '$1 ~ "CREATE" { print $2; fflush() }' | 
+inotifywait -m -r --format "%e %f" "${DIR}" | awk '$1 ~ "CREATE" { print $2; fflush() }' |
 while read -r file
 do
     FILE="${DIR}"/"${file}"
