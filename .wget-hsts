@@ -1,0 +1,6 @@
+# HSTS 1.0 Known Hosts database for GNU Wget.
+# Edit at your own risk.
+# <hostname>	<port>	<incl. subdomains>	<created>	<max-age>
+scm.genesisrage.net	0	0	1638278944	15768000
+github.com	0	1	1638276879	31536000
+codeload.github.com	0	0	1638276880	31536000

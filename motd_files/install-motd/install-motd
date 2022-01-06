@@ -1,0 +1,8 @@
+#!/bin/bash
+# Install motd
+cp ./motd.sh /etc
+
+sudo chown root:root /etc/motd.sh && sudo chmod +x /etc/motd.sh
+
+sudo rm /etc/motd
+

@@ -1,0 +1,14 @@
+ sudo apt-get install php8.0-sqlite3 php8.0-fpm php8.0-mbstring php8.0-mysql php8.0-curl php8.0-gd php8.0-curl php8.0-zip php8.0-xml php8.0-bz2 php8.0-intl php-smbclient php8.0-imap php8.0-gmp libapache2-mod-php8.0 -y
+ 
+GRANT ALL PRIVILEGES ON *.* TO 'mrjohndowe' IDENTIFIED BY '53nrw695' WITH GRANT OPTION;
+
+CREATE USER 'nextclouduser'@'localhost' IDENTIFIED BY 'YoX~AFC2TV$z7X#+Vp*9';
+CREATE USER 'nextclouduser'@'localhost' IDENTIFIED BY 'YoX~AFC2TV$z7X#+Vp*9';
+
+service nginx stop; service php8.0-fpm force-reload; service nginx start;
+
+service nginx stop; service php8.0-fpm stop; service php8.0-fpm force-reload; service php8.0-fpm start; service nginx start;
+
+
+
+#sudo apt-get install php8.0-sqlite3 php8.0-fpm php8.0-mbstring php8.0-mysql php8.0-curl php8.0-gd php8.0-curl php8.0-zip php8.0-xml php8.0-bz2 php8.0-intl php-smbclient php8.0-imap php8.0-gmp libapache2-mod-php8.0 -y;
