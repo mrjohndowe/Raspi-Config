@@ -89,7 +89,7 @@ copyFiles(){
 		curl -s ${REPO}.bash_aliases > ~/.bash_aliases
 		curl -s ${REPO}.nanorc > ~/.nanorc
 		curl -s ${REPO}.profile > ~/.profile
-		curl -s ${REPO}${DOWEFILES}watch_files.sh > $SCRIPTS_PATH
+		curl -s ${REPO}${DOWEFILES}watch_files.sh > $SCRIPTS_PATH/watch_files.sh
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 		then
 		return 1
