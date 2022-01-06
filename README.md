@@ -7,7 +7,7 @@ Note: This repo is a draft, main purpose is to serve as a backup as I go along e
 
 ### Run `init.sh`
 
-    curl -s https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/init.sh | sudo bash
+    curl -s https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/init.sh >> init.sh | sudo chmod +x init.sh | ./init.sh
 
 - Overwrites existing `.bashrc` with the one included in this repo
 - Setup a pre-defined custom MOTD
