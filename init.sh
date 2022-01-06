@@ -89,7 +89,7 @@ copyFiles(){
 		curl -s ${REPO}.bash_aliases > ~/.bash_aliases
 		curl -s ${REPO}.nanorc > ~/.nanorc
 		curl -s ${REPO}.profile > ~/.profile
-		curl -s ${REPO}${DOWEFILES}watch_files.sh > $SCRIPTS_PATH/watch_files.sh
+		curl -s ${REPO}${DOWEFILES}watch_files.sh > ${SCRIPTS_PATH}watch_files.sh
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 		then
 		return 1
@@ -178,9 +178,13 @@ show_ascii_berry() {
 }
 ### RUN
 ########
+show_ascii_berry
 motd
+show_ascii_berry
 copyFiles
+show_ascii_berry
 webserverInstall
+show_ascii_berry
 phpmyadminInstall
 show_ascii_berry
 echo -e "${Yellow} Reloading.. ${Color_Off}"
