@@ -153,6 +153,7 @@ reload() {
 # SHOW RASBERRY
 ###############
 show_ascii_berry() {
+  clear
   echo -e "
         ${COL_LIGHT_GREEN}.;;,.
         .ccccc:,.
