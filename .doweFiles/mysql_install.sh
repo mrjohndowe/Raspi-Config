@@ -19,7 +19,7 @@ MYSQL_USER="mrjohndowe"
 MYSQL_USER_PASS="53nrw695"
 # Temporary Directory
 TMP="/var/tmp/"
-REPO="https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/.doweFiles/"
+REPO="https://github.com/mrjohndowe/Raspi-Config/tree/master/.doweFiles/"
 >>>>>>> master
 
 sudo clear;

@@ -13,7 +13,7 @@ Cyan='\033[0;36m'         # Cyan
 
 # Temporary Directory
 TMP="/var/tmp/"
-REPO="https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/.doweFiles/"
+REPO="https://github.com/mrjohndowe/Raspi-Config/tree/master/.doweFiles/"
 
 update() {
     read -p " Would you like to Update and Install package Files? (Y/n) " -n 1 -r
