@@ -33,7 +33,8 @@ echo "${GREEN}
 ( : '~'.~.'~' : ) ${DARKGREY}Disk usage.........: ${WHITE}${DISK}${RED}
  ~ .~ (   ) ~. ~  ${DARKGREY}Load Averages......: ${WHITE}${one}, ${five}, ${fifteen} (1, 5, 15 min)${RED}
   (  : '~' :  )   ${DARKGREY}Running Processes..: ${WHITE}`ps ax | wc -l | tr -d " "`${RED}
-   '~ .~~~. ~'    ${DARKGREY}IP Addresses.......: ${WHITE}${VAR_IP_INTERN}${RED}
+   '~ .~~~. ~'    ${DARKGREY}Local IP...........: ${WHITE}${VAR_IP_INTERN}${RED}
+   '~ .~~~. ~'    ${DARKGREY}External IP........: ${WHITE}${VAR_IP_EXTERN4} ${VAR_IP_EXTERN6}${RED}
        '~'        ${DARKGREY}Temperature........: ${WHITE}${TEMP}ºC${RED}
                   ${DARKGREY}Throttled..........: ${WHITE}${THROTTLED}${RED}
 ${NC}"
