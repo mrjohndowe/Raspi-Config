@@ -6,7 +6,8 @@
 #set -e
 
 # Repo Location that contains all the scripts to run
-REPO="https://raw.githubusercontent.com/mrjohndowe/Raspi-Config/refs/heads/master/"
+REPO="https://github.com/mrjohndowe/Raspi-Config/tree/b1f4a95a5074229d8a5e170885d204fea98f1395/"
+#.doweFiles
 DOWEFILES=".doweFiles/"
 MOTDFILES="motd_files/"
 
