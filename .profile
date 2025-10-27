@@ -32,7 +32,7 @@ SCREENWIDTH="1920"
 tmux new-session -A -s $TMUX
 #mux new-session \; setw force-width $SCREENWIDTH \; setw force-height $SCREENHEIGHT \; -A -s $TMUX
 
-exec ~/.doweFiles/neofetch
+#xec ~/.doweFiles/neofetch
 
 
 
