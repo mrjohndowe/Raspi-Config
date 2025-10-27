@@ -26,13 +26,24 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-TMUX="codeBlock
-SCREENHEIGHT="1080
+TMUX="workspace"
+SCREENHEIGHT="1080"
 SCREENWIDTH="1920"
-tmux new-session -A -s $TMUX
+unset $TMUX
+#tmux new-session -s -t $TMUX
+#unset $TMUX
+#tmux new-session -A -s $TMUX
 #mux new-session \; setw force-width $SCREENWIDTH \; setw force-height $SCREENHEIGHT \; -A -s $TMUX
 
-#xec ~/.doweFiles/neofetch
+
+if [ "$TERM_PROGRAM" = "tmux" ]; then
+	echo "Currently in a tmux session attaching"
+	tmux attach
+else
+	echo "Not in a session starting new session"
+	tmux new-session -A -s $TMUX
+fi
 
 
 
+# exec ~/.doweFiles/neofetch
