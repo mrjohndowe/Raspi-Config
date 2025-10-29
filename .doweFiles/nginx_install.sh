@@ -7,7 +7,7 @@
 webserver="nginx"
 filesFolder="."
 phpini="php.ini"
-testphp="index.php"
+testphp="phpFiles/index.php"
 webserverDefault="nginxDefault"
 phpVersion="8.4"
 # Temporary Directory
