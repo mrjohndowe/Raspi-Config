@@ -28,13 +28,15 @@ sudo apt-get upgrade -y;
 
 echo "Installing NGINX";
 sudo apt-get autoremove apache2 -y;
+sudo apt purge apache2 -y;
 sudo apt-get install nginx -y;
 
 echo "Starting the WebServer: NGINX"
 sudo systemctl start nginx;
+sudo systemctl enable nginx;
 
 echo "Install PHP and all dependecies  needed";
-sudo apt-get install php$phpVersion-fpm php$phpVersion-mbstring php$phpVersion-mysql php$phpVersion-curl php$phpVersion-gd php$phpVersion-curl php$phpVersion-zip  php$phpVersion-xml php$phpVersion-sqlite3 php$phpVersion-bz2 php$phpVersion-intl php-smbclient php$phpVersion-imap php$phpVersion-gmp -y;
+sudo apt-get install php$phpVersion-full php$phpVersion-fpm php$phpVersion-mbstring php$phpVersion-mysql php$phpVersion-curl php$phpVersion-gd php$phpVersion-curl php$phpVersion-zip  php$phpVersion-xml php$phpVersion-sqlite3 php$phpVersion-bz2 php$phpVersion-intl php-smbclient php$phpVersion-imap php$phpVersion-gmp -y;
 
 
 # echo "Waiting for the user to edit the file";
