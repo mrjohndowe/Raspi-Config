@@ -30,7 +30,7 @@ echo -e "${Cyan} Welcome to the ${Blue}Dowe Server ${Red}Files Installation${Col
 ###### VARIABLES ########
 webserver="nginx"
 doweFiles=".doweFiles"
-phpVersion="8.0"
+phpVersion="8.4"
 mysql="mysql_install.sh"
 nginx="nginx_install.sh"
 phpmyadmin="phpmyadmin_installation.sh"
@@ -87,9 +87,17 @@ copyFiles(){
 	if [[ $REPLY =~ ^[yY]$ ]]
 		then
 		curl -s ${REPO}.bashrc > ~/.bashrc
+		curl -s ${REPO}.bashrc > /etc/skel/.bashrc
+		sudo chown root:root /etc/skel/.bashrc
 		curl -s ${REPO}.bash_aliases > ~/.bash_aliases
+		curl -s ${REPO}.bash_aliases > /etc/skel/.bash_aliases
+		sudo chown root:root /etc/skel/.bash_aliases
 		curl -s ${REPO}.nanorc > ~/.nanorc
+		curl -s ${REPO}.nanorc > /etc/skel/.nanorc
+		sudo chown root:root /etc/skel/.nanorc
 		curl -s ${REPO}.profile > ~/.profile
+		curl -s ${REPO}.profile > /etc/skel/.profile
+		sudo chown root:root /etc/skel/.profile
 		curl -s ${REPO}${DOWEFILES}watch_files.sh > ${SCRIPTS_PATH}watch_files.sh
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 		then

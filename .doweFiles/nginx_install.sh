@@ -9,7 +9,7 @@ filesFolder="."
 phpini="php.ini"
 testphp="index.php"
 webserverDefault="nginxDefault"
-phpVersion="8.0"
+phpVersion="8.4"
 # Temporary Directory
 TMP="/var/tmp/"
 REPO="https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/.doweFiles/"

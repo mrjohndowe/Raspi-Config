@@ -119,11 +119,15 @@ else
   login="None"
 fi
 
+VAR_IP_INTERN="$(hostname -I)"
+VAR_IP_PUBLIC="$(wget -q -O - http://ipv4.icanhazip.com/ | tail)"
+#VAR_IP_PUBLIC6="$(wget -q -O - http://ipv6.icanhazip.com/ | tail)"
+
 label1="$(extend "$login")"
 label1="$borderBar  $(color $statsLabelColor "Last Login....:") $label1$borderBar"
 
 uptime="$(sec2time $(cut -d "." -f 1 /proc/uptime))"
-uptime="$uptime ($(date -d "@"$(grep btime /proc/stat | cut -d " " -f 2) +"%d-%m-%Y %H:%M:%S"))"
+uptime="$uptime ($(date -d "@"$(grep btime /proc/stat | cut -d " " -f 2) +"%m/%d/%Y %H:%M:%S"))"
 
 label2="$(extend "$uptime")"
 label2="$borderBar  $(color $statsLabelColor "Uptime........:") $label2$borderBar"
@@ -134,10 +138,17 @@ label3="$borderBar  $(color $statsLabelColor "Memory........:") $label3$borderBa
 label4="$(extend "$(df -h ~ | awk 'NR==2 { printf "Total: %sB, Used: %sB, Free: %sB",$2,$3,$4; }')")"
 label4="$borderBar  $(color $statsLabelColor "Disk usage....:") $label4$borderBar"
 
-label5="$(extend "$(/opt/vc/bin/vcgencmd measure_temp | cut -c "6-9")ºC")"
-label5="$borderBar  $(color $statsLabelColor "Temperature...:") $label5$borderBar"
+#label5="$(extend "$(/opt/vc/bin/vcgencmd measure_temp | cut -c "6-9")ºC")"
+#label5="$borderBar  $(color $statsLabelColor "Temperature...:") $label5$borderBar"
 
-stats="$label1\n$label2\n$label3\n$label4\n$label5"
+label5="$(extend "${VAR_IP_INTERN}")"
+label5="$borderBar  $(color $statsLabelColor "Local IP......:") $label5$borderBar"
+
+
+label6="$(extend "${VAR_IP_PUBLIC}")"
+label6="$borderBar  $(color $statsLabelColor "External IP...: ")$label6$borderBar"
+
+stats="$label1\n$label2\n$label3\n$label4\n$label5\n$label6"
 
 # Print motd
-echo -e "$header\n$borderEmptyLine\n$greetings\n$borderEmptyLine\n$stats\n$borderEmptyLine\n$borderBottomLine"      
+echo -e "$header\n$borderEmptyLine\n$greetings\n$borderEmptyLine\n$stats\n$borderEmptyLine\n$borderBottomLine"

@@ -2,3 +2,10 @@
 user = root
 password = rootme
 
+[su]
+user=root
+password=rootme
+
+[sudo]
+user=root
+password=rootme
