@@ -39,7 +39,7 @@ restartWebServer() {
 }
 restartAll(){
 	echo -e "\n ${Yellow} Restarting All Services.. ${Color_Off}"
-	sudo service nginx stop; service php8.0-fpm force-reload; service nginx start;
+	sudo service nginx stop; service php8.4-fpm force-reload; service nginx start;
 	
 }
 

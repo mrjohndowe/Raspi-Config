@@ -12,7 +12,7 @@ webserverDefault="nginxDefault"
 phpVersion="8.4"
 # Temporary Directory
 TMP="/var/tmp/"
-REPO="https://scm.genesisrage.net/mrjohndowe/Raspi-Config/raw/branch/master/.doweFiles/"
+REPO="https://raw.githubusercontent.com/mrjohndowe/Raspi-Config/refs/heads/master/.doweFiles/"
 
 ###### END VAR ######
 

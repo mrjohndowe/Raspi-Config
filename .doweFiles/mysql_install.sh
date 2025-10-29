@@ -13,7 +13,7 @@ MYSQL_USER="mrjohndowe"
 MYSQL_USER_PASS="53nrw695"
 # Temporary Directory
 TMP="/var/tmp/"
-REPO="https://github.com/mrjohndowe/Raspi-Config/tree/master/.doweFiles/"
+REPO="https://raw.githubusercontent.com/mrjohndowe/Raspi-Config/refs/heads/master/.doweFiles/"
 
 sudo clear;
 echo "Getting ready to install MYSQL on Pi";
