@@ -33,6 +33,7 @@ doweFiles=".doweFiles"
 phpVersion="8.4"
 mysql="mysql_install.sh"
 nginx="nginx_install.sh"
+apache2="apache2_install.sh"
 phpmyadmin="phpmyadmin_installation.sh"
 TEMP="/var/tmp/"
 
@@ -108,17 +109,35 @@ copyFiles(){
 # WEBSERVER INSTALLATION
 #######################
 webserverInstall() {
-	read -p " Would you like to install NGINX? (Y/n) " -n 1 -r
+	read -p " Would you like to install NGINX? (Y/n) " -r
 	echo
-	if [[ $REPLY =~ ^[yY]$ ]]
+	if [[ $REPLY =~ ^(yY)$ ]]
 		then
 		# Download the NGINX Files
 		sudo curl -s ${REPO}${DOWEFILES}$nginx | sudo bash
 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
 		then
 		return 1
-	fi
+	fi	
 }
+
+
+# webserverInstall() {
+# 	read -p " Would you like to install NGINX or APACHE2?" -n 1 -r
+# 	echo
+# 	if [[ $REPLY =~ ^[nginxNGINX]$ ]]
+# 		then
+# 		# Download the NGINX Files
+# 		sudo curl -s ${REPO}${DOWEFILES}$nginx | sudo bash
+# 	elif [[ $REPLY =~ ^[apache2APACHE2]$ ]]
+# 		then	
+# 		# Download the APACHE2 Files
+# 		sudo curl -s ${REPO}${DOWEFILES}$apache2 | sudo bash
+# 	elif [[ ! $REPLY =~ ^[Yy]$ ]]
+# 		then
+# 		return 1
+# 	fi
+# }
 #If the color table file exists,
 #################################
 if [[ -f "${coltable}" ]]; then
